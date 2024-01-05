@@ -3,9 +3,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Vector2 moveDir;
+    [HideInInspector]
+    public Vector2 moveDir;
 
     [SerializeField] private float moveSpeed;
+
+    [HideInInspector]
+    public float lastHorizontalMovement;
+    [HideInInspector]
+    public float lastVerticalMovement;
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
@@ -21,6 +27,12 @@ public class PlayerMovement : MonoBehaviour
         float moveDirY = Input.GetAxis("Vertical");
 
         moveDir = new Vector2(moveDirX, moveDirY).normalized;
+        if (moveDir.x != 0){
+            lastHorizontalMovement = moveDir.x;
+        }
+        if (moveDir.y != 0){
+            lastVerticalMovement = moveDir.y;
+        }
     }
 
     private void Move(){
