@@ -3,8 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [HideInInspector]
-    public Vector2 moveDir;
+
 
     [SerializeField] private float moveSpeed;
 
@@ -12,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float lastHorizontalMovement;
     [HideInInspector]
     public float lastVerticalMovement;
+    [HideInInspector]
+    public Vector2 moveDir;
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
